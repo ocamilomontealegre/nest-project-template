@@ -1,5 +1,5 @@
 import { NestFactory } from "@nestjs/core";
-import { Logger, VersioningType, type INestApplication } from "@nestjs/common";
+import { Logger, ValidationPipe, VersioningType, type INestApplication } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { AppModule } from "@app/app.module";
 import { configureOpenAPI } from "@common/open-api/open-api.config";
@@ -30,6 +30,8 @@ const configureApp = (
     type: VersioningType.URI,
     defaultVersion: apiVersion,
   });
+
+  app.useGlobalPipes(new ValidationPipe());
 };
 
 const startServer = async (
