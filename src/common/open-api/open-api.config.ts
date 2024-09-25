@@ -3,29 +3,39 @@ import { ConfigService } from "@nestjs/config";
 import { DocumentBuilder, SwaggerModule, type OpenAPIObject } from "@nestjs/swagger";
 import type { IAppEnvironment } from "@common/env/app.config";
 
-const getAppConfig = (app: INestApplication): IAppEnvironment => {
-  const configService: ConfigService = app.get(ConfigService);
-  return configService.get<IAppEnvironment>("app");
-};
+export class OpenAPIConfigurator {
+  public constructor(
+    private _app: INestApplication,
+    private _port: number,
+  ) {
+    this._app = _app;
+    this._port = _port;
+  }
 
-const buildDocument = (app: INestApplication): Omit<OpenAPIObject, "paths"> => {
-  const { appDescription, appTitle, appVersion } = getAppConfig(app);
+  private getAppConfig(): IAppEnvironment {
+    const configService: ConfigService = this._app.get(ConfigService);
+    return configService.get<IAppEnvironment>("app");
+  }
 
-  return new DocumentBuilder()
-    .setTitle(appTitle)
-    .setDescription(appDescription)
-    .setVersion(appVersion)
-    .build();
-};
+  private buildDocument(): Omit<OpenAPIObject, "paths"> {
+    const { appDescription, appTitle, appVersion } = this.getAppConfig();
 
-export const configureOpenAPI = (app: INestApplication, port: number): void => {
-  const { appDocsPrefix } = getAppConfig(app);
+    return new DocumentBuilder()
+      .setTitle(appTitle)
+      .setDescription(appDescription)
+      .setVersion(appVersion)
+      .build();
+  }
 
-  const document: OpenAPIObject = SwaggerModule.createDocument(app, buildDocument(app));
-  SwaggerModule.setup(appDocsPrefix, app, document);
+  public configure(): void {
+    const { appDocsPrefix } = this.getAppConfig();
 
-  Logger.debug(
-    `📔 OpenAPI docs is running on: http://localhost:${port}/${appDocsPrefix}`,
-    "OpenAPI",
-  );
-};
+    const document: OpenAPIObject = SwaggerModule.createDocument(this._app, this.buildDocument());
+    SwaggerModule.setup(appDocsPrefix, this._app, document);
+
+    Logger.debug(
+      `📔 OpenAPI docs is running on: http://localhost:${this._port}/${appDocsPrefix}`,
+      "OpenAPI",
+    );
+  }
+}
