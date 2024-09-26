@@ -2,6 +2,7 @@ import { NestFactory } from "@nestjs/core";
 import { ValidationPipe, VersioningType, type INestApplication } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { AppModule } from "./app.module";
+import { AppLoggerService } from "@common/logger/app-logger.service";
 import { OpenAPIConfigurator } from "@common/open-api/open-api.config";
 import type { IStart } from "@common/interfaces";
 
@@ -10,10 +11,10 @@ export class AppBuilder {
   private _configService: ConfigService;
   private _envVariables: IStart;
 
-  public constructor() {}
-
   public async createNestApp(): Promise<this> {
-    this._app = await NestFactory.create(AppModule);
+    this._app = await NestFactory.create(AppModule, {
+      logger: new AppLoggerService(),
+    });
     this._configService = this._app.get(ConfigService);
     return this;
   }
@@ -49,7 +50,7 @@ export class AppBuilder {
     return this;
   }
 
-  public async build(): Promise<INestApplication> {
+  public build(): INestApplication {
     return this._app;
   }
 

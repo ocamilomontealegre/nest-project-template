@@ -20,6 +20,7 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@common/*": ["src/common/*"],
+      "@config/*": ["src/config/*"],
       "@health/*": ["src/health/*"],
     }
   }

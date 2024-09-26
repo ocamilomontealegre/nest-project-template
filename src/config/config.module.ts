@@ -1,9 +1,14 @@
-import { Module, type DynamicModule } from "@nestjs/common";
+import { Module, DynamicModule } from "@nestjs/common";
 import { HttpExceptionFilter } from "@common/exception-filters";
-import { APP_FILTER } from "@nestjs/core";
+import { HttpLoggerInterceptor } from "@common/interceptors";
+import { APP_FILTER, APP_INTERCEPTOR } from "@nestjs/core";
 
 @Module({
   providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: HttpLoggerInterceptor,
+    },
     {
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,

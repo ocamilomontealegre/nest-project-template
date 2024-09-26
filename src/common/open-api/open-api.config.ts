@@ -5,8 +5,8 @@ import type { IAppEnvironment } from "@common/env/app.config";
 
 export class OpenAPIConfigurator {
   public constructor(
-    private _app: INestApplication,
-    private _port: number,
+    private readonly _app: INestApplication,
+    private readonly _port: number,
   ) {
     this._app = _app;
     this._port = _port;

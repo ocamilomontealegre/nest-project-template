@@ -8,31 +8,31 @@ export class AppEnvVariables {
   @IsString()
   @Type(() => String)
   @Expose()
-  readonly APP_DESCRIPTION!: string;
+  public readonly APP_DESCRIPTION!: string;
 
   @IsNotEmpty()
   @IsString()
   @Type(() => String)
   @Expose()
-  readonly APP_DOCS_PREFIX!: string;
+  public readonly APP_DOCS_PREFIX!: string;
 
   @IsNotEmpty()
   @IsString()
   @Type(() => String)
   @Expose()
-  readonly APP_GLOBAL_PREFIX!: string;
+  public readonly APP_GLOBAL_PREFIX!: string;
 
   @IsNotEmpty()
   @IsString()
   @Type(() => String)
   @Expose()
-  readonly APP_TITLE!: string;
+  public readonly APP_TITLE!: string;
 
   @IsNotEmpty()
   @IsString()
   @Type(() => String)
   @Expose()
-  readonly APP_VERSION!: string;
+  public readonly APP_VERSION!: string;
 }
 
 export interface IAppEnvironment {

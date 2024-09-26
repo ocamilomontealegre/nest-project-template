@@ -7,7 +7,7 @@ const startServer = async (app: INestApplication, envVariables: IStart): Promise
 
   await app.listen(port, () => {
     Logger.debug(
-      `🚀 Server listening on http://localhost:${port}/${apiGlobalPrefix}/v${apiVersion}`,
+      `🚀 Server listening on: http://localhost:${port}/${apiGlobalPrefix}/v${apiVersion}`,
       "Start",
     );
   });
@@ -15,7 +15,7 @@ const startServer = async (app: INestApplication, envVariables: IStart): Promise
 
 async function bootstrap(): Promise<void> {
   const appBuilder = new AppBuilder();
-  const app = await (await appBuilder.createNestApp())
+  const app = (await appBuilder.createNestApp())
     .setEnv()
     .setAppConfig()
     .setOpenAPIDocsConfig()
