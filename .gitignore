@@ -1,9 +1,9 @@
-# compiled output
+# Compiled output
 /dist
 /node_modules
 /build
 
-# npm
+# Package manager
 pnpm-lock.yaml
 
 # Logs
@@ -30,6 +30,7 @@ lerna-debug.log*
 *.launch
 .settings/
 *.sublime-workspace
+/.vscode
 
 # IDE - VSCode
 .vscode/*
