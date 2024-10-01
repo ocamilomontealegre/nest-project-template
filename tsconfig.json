@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "CommonJS",
+    "target": "ESNext",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
@@ -22,6 +22,8 @@
       "@common/*": ["src/common/*"],
       "@config/*": ["src/config/*"],
       "@health/*": ["src/health/*"],
+      "@modules/*": ["src/modules/*"],
     }
-  }
+  },
+  "exclude": ["node_modules", "dist"]
 }

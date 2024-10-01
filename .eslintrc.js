@@ -16,7 +16,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  ignorePatterns: [".eslintrc.js", "global.d.ts", "jest.base.config.ts"],
+  ignorePatterns: [".eslintrc.js", "dist", "global.d.ts", "jest.base.config.ts"],
   rules: {
     "unused-imports/no-unused-imports": "error",
     "no-duplicate-imports": "error",
