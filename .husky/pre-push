@@ -1,0 +1,4 @@
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+echo -e "${GREEN}Commit completed successfully. Keep up the good work!${NC}"
