@@ -1,1 +1,1 @@
-export * from "./start.interface";
+export type * from "./start.interface";
