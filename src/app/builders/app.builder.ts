@@ -1,7 +1,7 @@
 import { NestFactory } from "@nestjs/core";
 import { ValidationPipe, VersioningType, type INestApplication } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import { AppModule } from "./app.module";
+import { AppModule } from "../app.module";
 import { AppLoggerService } from "@common/logger/app-logger.service";
 import { OpenAPIConfigurator } from "@common/open-api/open-api.config";
 import type { IStart } from "@common/interfaces";

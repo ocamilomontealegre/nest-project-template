@@ -1,5 +1,5 @@
 import { Logger, type INestApplication } from "@nestjs/common";
-import { AppBuilder } from "@app/app.builder";
+import { AppBuilder } from "@app/builders/app.builder";
 import type { IStart } from "@common/interfaces";
 
 const startServer = async (app: INestApplication, envVariables: IStart): Promise<void> => {
