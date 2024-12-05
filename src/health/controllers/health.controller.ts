@@ -1,7 +1,7 @@
 import { Controller, Get, Inject } from "@nestjs/common";
-import { HEALTH_ENDPOINT, HEALTH_SERVICE } from "../constants";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { IHealthMessage } from "../interfaces/health-message.interface";
+import { HEALTH_ENDPOINT, HEALTH_SERVICE } from "../constants";
+import type { IHealthMessage } from "../interfaces/health-message.interface";
 
 @ApiTags("Health")
 @Controller(HEALTH_ENDPOINT)
